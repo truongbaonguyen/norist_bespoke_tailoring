@@ -2,7 +2,7 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <!-- Favicon Logo -->
     <link rel="icon" type="image/png" href="img/logo-bg.png">
     <title>NORIST - Bespoke Tailoring Da Nang</title>
@@ -41,18 +41,37 @@
         }
     </script>
     <style>
-        .glass-panel { background: rgba(18, 18, 21, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(197, 160, 89, 0.2); }
+        .glass-panel { 
+            background: rgba(18, 18, 21, 0.88); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(197, 160, 89, 0.2); 
+        }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        /* Safe area bottom padding for modern phones */
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom, 12px);
+        }
     </style>
 </head>
 <body class="bg-darkbg text-gray-200 font-sans antialiased selection:bg-gold selection:text-black">
 
     <!-- Navigation Header -->
     <nav class="fixed w-full z-40 glass-panel border-b border-gold/10">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 md:h-20 flex items-center justify-between">
             <a href="#" class="flex items-center gap-3">
-                <img src="img/logo-bg1.png" alt="NORIST Bespoke Tailoring" class="h-16 md:h-20 w-auto object-contain">
+                <img src="img/logo-bg1.png" alt="NORIST Bespoke Tailoring" class="h-12 md:h-20 w-auto object-contain">
             </a>
             
+            <!-- Desktop Navigation Links -->
             <div class="hidden md:flex space-x-8 text-xs tracking-[0.15em] uppercase text-gray-300 font-medium">
                 <a href="#why-us" class="hover:text-gold transition">Why Us</a>
                 <a href="#collection" class="hover:text-gold transition">Collection</a>
@@ -60,6 +79,7 @@
                 <a href="#pricing" class="hover:text-gold transition">Pricing</a>
             </div>
 
+            <!-- Desktop Action Buttons -->
             <div class="hidden md:flex items-center space-x-3">
                 <a href="tel:+84339447859" class="border border-gold/40 text-gold hover:border-gold hover:bg-gold/10 px-3.5 py-2 text-xs tracking-widest uppercase transition">
                     <i class="fas fa-phone-alt mr-1"></i> Call
@@ -68,31 +88,44 @@
                     <i class="fab fa-whatsapp mr-1 text-sm"></i> WhatsApp
                 </a>
             </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="menu-btn" onclick="toggleMobileMenu()" class="md:hidden text-gold p-2 rounded focus:outline-none" aria-label="Toggle Navigation">
+                <i id="menu-icon" class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gold/20 bg-darkbg/95 px-6 py-4 flex flex-col space-y-4 text-xs tracking-[0.2em] uppercase text-gray-200 font-medium border-b border-gold/20">
+            <a href="#why-us" onclick="toggleMobileMenu()" class="hover:text-gold transition py-1">Why Us</a>
+            <a href="#collection" onclick="toggleMobileMenu()" class="hover:text-gold transition py-1">Collection</a>
+            <a href="#craftsmanship" onclick="toggleMobileMenu()" class="hover:text-gold transition py-1">Craftsmanship</a>
+            <a href="#pricing" onclick="toggleMobileMenu()" class="hover:text-gold transition py-1">Pricing</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-[85vh] flex items-center justify-center pt-24 pb-10 overflow-hidden">
+    <section class="relative min-h-[80vh] md:min-h-[85vh] flex items-center justify-center pt-24 pb-12 overflow-hidden">
         <div class="absolute inset-0 z-0">
             <img src="./img/6.png" alt="Norist Crimson Suit" class="w-full h-full object-cover object-top opacity-35 scale-105 filter brightness-75">
             <div class="absolute inset-0 bg-gradient-to-t from-darkbg via-darkbg/70 to-darkbg/30"></div>
         </div>
 
-        <div class="relative z-10 max-w-4xl mx-auto text-center px-6 pt-10 pb-4">
-            <span class="text-xs md:text-sm tracking-[0.3em] text-gold uppercase mb-4 block font-semibold">
+        <div class="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 pt-6 md:pt-10 pb-4">
+            <span class="text-[10px] sm:text-xs md:text-sm tracking-[0.25em] md:tracking-[0.3em] text-gold uppercase mb-3 md:mb-4 block font-semibold">
                 LUXURY BESPOKE TAILORING • DA NANG
             </span>
 
-            <h1 class="text-3xl md:text-6xl font-serif text-white font-bold mb-6 tracking-wide leading-tight">
+            <h1 class="text-2xl sm:text-4xl md:text-6xl font-serif text-white font-bold mb-4 md:mb-6 tracking-wide leading-tight">
                 THE ART OF BESPOKE TAILORING
             </h1>
 
-            <p class="text-gray-300 text-sm md:text-base max-w-3xl mx-auto mb-10 font-normal leading-relaxed">
+            <p class="text-gray-300 text-xs sm:text-sm md:text-base max-w-2xl md:max-w-3xl mx-auto mb-8 md:mb-10 font-normal leading-relaxed">
                 Bringing private at-home bespoke fitting directly to your hotel, residence, or office in <span class="whitespace-nowrap">Da Nang</span>.
             </p>
             
             <div class="flex flex-wrap items-center justify-center gap-3">
-                <a href="#collection" class="border border-white/20 text-gray-300 px-6 py-3.5 text-xs tracking-[0.15em] uppercase hover:border-white hover:text-white transition duration-300 bg-black/20">
+                <a href="#collection" class="border border-white/30 text-gray-200 px-6 py-3 md:py-3.5 text-xs tracking-[0.15em] uppercase hover:border-gold hover:text-gold transition duration-300 bg-black/40">
                     Explore Lookbook
                 </a>
             </div>
@@ -100,150 +133,150 @@
     </section>
 
     <!-- Value Proposition -->
-    <section id="why-us" class="scroll-mt-32 pt-6 pb-20 px-6 max-w-7xl mx-auto">
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="glass-panel p-8 text-center flex flex-col items-center">
-                <div class="text-gold text-3xl mb-4"><i class="fas fa-cut"></i></div>
-                <h3 class="font-serif text-xl text-white mb-3 tracking-wide font-semibold">Bespoke Construction</h3>
-                <p class="text-gray-300 text-sm leading-relaxed font-normal">Custom hand-stitched tailoring structured to mold perfectly to your body shape and breathe effortlessly in tropical climate.</p>
+    <section id="why-us" class="scroll-mt-24 pt-4 pb-16 md:pb-20 px-4 sm:px-6 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8">
+            <div class="glass-panel p-6 sm:p-8 text-center flex flex-col items-center rounded-sm">
+                <div class="text-gold text-2xl sm:text-3xl mb-3 sm:mb-4"><i class="fas fa-cut"></i></div>
+                <h3 class="font-serif text-lg sm:text-xl text-white mb-2 sm:mb-3 tracking-wide font-semibold">Bespoke Construction</h3>
+                <p class="text-gray-300 text-xs sm:text-sm leading-relaxed font-normal">Custom hand-stitched tailoring structured to mold perfectly to your body shape and breathe effortlessly in tropical climate.</p>
             </div>
-            <div class="glass-panel p-8 text-center flex flex-col items-center">
-                <div class="text-gold text-3xl mb-4"><i class="fas fa-user-tie"></i></div>
-                <h3 class="font-serif text-xl text-white mb-3 tracking-wide font-semibold">Master Artisan Tailor</h3>
-                <p class="text-gray-300 text-sm leading-relaxed font-normal">Crafted by a seasoned master artisan with years of experience tailoring bespoke outfits for discerning clients.</p>
+            <div class="glass-panel p-6 sm:p-8 text-center flex flex-col items-center rounded-sm">
+                <div class="text-gold text-2xl sm:text-3xl mb-3 sm:mb-4"><i class="fas fa-user-tie"></i></div>
+                <h3 class="font-serif text-lg sm:text-xl text-white mb-2 sm:mb-3 tracking-wide font-semibold">Master Artisan Tailor</h3>
+                <p class="text-gray-300 text-xs sm:text-sm leading-relaxed font-normal">Crafted by a seasoned master artisan with years of experience tailoring bespoke outfits for discerning clients.</p>
             </div>
-            <div class="glass-panel p-8 text-center flex flex-col items-center">
-                <div class="text-gold text-3xl mb-4"><i class="fas fa-home"></i></div>
-                <h3 class="font-serif text-xl text-white mb-3 tracking-wide font-semibold">At-Home Doorstep Service</h3>
-                <p class="text-gray-300 text-sm leading-relaxed font-normal">We eliminate high retail rents. We bring fabric swatches and conduct fitting sessions at your private villa, hotel, or residence.</p>
+            <div class="glass-panel p-6 sm:p-8 text-center flex flex-col items-center rounded-sm">
+                <div class="text-gold text-2xl sm:text-3xl mb-3 sm:mb-4"><i class="fas fa-home"></i></div>
+                <h3 class="font-serif text-lg sm:text-xl text-white mb-2 sm:mb-3 tracking-wide font-semibold">At-Home Doorstep Service</h3>
+                <p class="text-gray-300 text-xs sm:text-sm leading-relaxed font-normal">We eliminate high retail rents. We bring fabric swatches and conduct fitting sessions at your private villa, hotel, or residence.</p>
             </div>
         </div>
     </section>
 
     <!-- Collection Showcase -->
-    <section id="collection" class="scroll-mt-20 py-20 px-6 max-w-7xl mx-auto">
-        <div class="text-center mb-12">
-            <span class="text-gold tracking-[0.25em] uppercase text-xs font-semibold block mb-2">Bespoke Portfolio</span>
-            <h2 class="font-serif text-3xl sm:text-4xl text-white tracking-wide font-bold">SIGNATURE LOOKBOOK</h2>
+    <section id="collection" class="scroll-mt-20 py-12 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-8 md:mb-12">
+            <span class="text-gold tracking-[0.25em] uppercase text-[10px] sm:text-xs font-semibold block mb-1.5">Bespoke Portfolio</span>
+            <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-white tracking-wide font-bold">SIGNATURE LOOKBOOK</h2>
         </div>
 
-        <!-- Filter Tabs -->
-        <div class="flex flex-wrap justify-center gap-3 mb-12">
-            <button onclick="filterGallery('all', event)" class="tab-btn active text-xs uppercase tracking-widest px-5 py-2.5 border border-gold bg-gold text-black font-semibold transition">All Works</button>
-            <button onclick="filterGallery('red', event)" class="tab-btn text-xs uppercase tracking-widest px-5 py-2.5 border border-white/20 text-gray-300 hover:text-white transition">Classic Black</button>
-            <button onclick="filterGallery('black', event)" class="tab-btn text-xs uppercase tracking-widest px-5 py-2.5 border border-white/20 text-gray-300 hover:text-white transition">Crimson Lounge</button>
-            <button onclick="filterGallery('white', event)" class="tab-btn text-xs uppercase tracking-widest px-5 py-2.5 border border-white/20 text-gray-300 hover:text-white transition">Riviera Resort</button>
-            <button onclick="filterGallery('workshop', event)" class="tab-btn text-xs uppercase tracking-widest px-5 py-2.5 border border-white/20 text-gray-300 hover:text-white transition">Craftsmanship</button>
+        <!-- Filter Tabs (Horizontal Scroll on Mobile, Centered Flex on Desktop) -->
+        <div class="flex overflow-x-auto no-scrollbar md:flex-wrap md:justify-center gap-2 sm:gap-3 mb-8 md:mb-12 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
+            <button onclick="filterGallery('all', event)" class="tab-btn active text-[10px] sm:text-xs uppercase tracking-widest px-4 sm:px-5 py-2.5 border border-gold bg-gold text-black font-semibold transition whitespace-nowrap shrink-0">All Works</button>
+            <button onclick="filterGallery('black', event)" class="tab-btn text-[10px] sm:text-xs uppercase tracking-widest px-4 sm:px-5 py-2.5 border border-white/20 text-gray-300 hover:text-white transition whitespace-nowrap shrink-0">Classic Black</button>
+            <button onclick="filterGallery('red', event)" class="tab-btn text-[10px] sm:text-xs uppercase tracking-widest px-4 sm:px-5 py-2.5 border border-white/20 text-gray-300 hover:text-white transition whitespace-nowrap shrink-0">Crimson Lounge</button>
+            <button onclick="filterGallery('white', event)" class="tab-btn text-[10px] sm:text-xs uppercase tracking-widest px-4 sm:px-5 py-2.5 border border-white/20 text-gray-300 hover:text-white transition whitespace-nowrap shrink-0">Riviera Resort</button>
+            <button onclick="filterGallery('workshop', event)" class="tab-btn text-[10px] sm:text-xs uppercase tracking-widest px-4 sm:px-5 py-2.5 border border-white/20 text-gray-300 hover:text-white transition whitespace-nowrap shrink-0">Craftsmanship</button>
         </div>
 
-        <!-- Image Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="gallery-item red group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer" onclick="openLightbox('./img/6.png')">
-                <img src="./img/6.png" alt="Crimson Suit" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-6 flex flex-col justify-end">
-                    <span class="text-gold text-xs uppercase tracking-widest">Statement Collection</span>
-                    <h4 class="font-serif text-lg text-white">Crimson Evening Lounge Jacket</h4>
+        <!-- Image Grid (2 Columns on Mobile for Luxury E-commerce feel, 3 Columns on Desktop) -->
+        <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
+            <div class="gallery-item red group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer rounded-sm" onclick="openLightbox('./img/6.png')">
+                <img src="./img/6.png" alt="Crimson Suit" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-3 sm:p-6 flex flex-col justify-end">
+                    <span class="text-gold text-[10px] sm:text-xs uppercase tracking-widest">Statement Collection</span>
+                    <h4 class="font-serif text-xs sm:text-lg text-white font-medium">Crimson Evening Lounge Jacket</h4>
                 </div>
             </div>
-            <div class="gallery-item red group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer" onclick="openLightbox('./img/7.png')">
-                <img src="./img/7.png" alt="Crimson Suit Detail" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="gallery-item red group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer rounded-sm" onclick="openLightbox('./img/7.png')">
+                <img src="./img/7.png" alt="Crimson Suit Detail" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
             </div>
-            <div class="gallery-item red group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer" onclick="openLightbox('./img/8.png')">
-                <img src="./img/8.png" alt="Crimson Suit Seated" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="gallery-item red group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer rounded-sm" onclick="openLightbox('./img/8.png')">
+                <img src="./img/8.png" alt="Crimson Suit Seated" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
             </div>
 
-            <div class="gallery-item black group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer" onclick="openLightbox('./img/9.png')">
-                <img src="./img/9.png" alt="Black Suit" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-6 flex flex-col justify-end">
-                    <span class="text-gold text-xs uppercase tracking-widest">Classic Series</span>
-                    <h4 class="font-serif text-lg text-white">Bespoke Black Tuxedo & Suit</h4>
+            <div class="gallery-item black group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer rounded-sm" onclick="openLightbox('./img/9.png')">
+                <img src="./img/9.png" alt="Black Suit" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-3 sm:p-6 flex flex-col justify-end">
+                    <span class="text-gold text-[10px] sm:text-xs uppercase tracking-widest">Classic Series</span>
+                    <h4 class="font-serif text-xs sm:text-lg text-white font-medium">Bespoke Black Tuxedo & Suit</h4>
                 </div>
             </div>
-            <div class="gallery-item black group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer" onclick="openLightbox('./img/10.png')">
-                <img src="./img/10.png" alt="Black Suit Detail" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="gallery-item black group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer rounded-sm" onclick="openLightbox('./img/10.png')">
+                <img src="./img/10.png" alt="Black Suit Detail" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
             </div>
-            <div class="gallery-item black group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer" onclick="openLightbox('./img/11.png')">
-                <img src="./img/11.png" alt="Black Suit Fit" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="gallery-item black group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer rounded-sm" onclick="openLightbox('./img/11.png')">
+                <img src="./img/11.png" alt="Black Suit Fit" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
             </div>
 
-            <div class="gallery-item white group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer" onclick="openLightbox('./img/12.png')">
-                <img src="./img/12.png" alt="White Riviera Suit" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-6 flex flex-col justify-end">
-                    <span class="text-gold text-xs uppercase tracking-widest">Resort & Wedding</span>
-                    <h4 class="font-serif text-lg text-white">Off-White Linen Riviera Suit</h4>
+            <div class="gallery-item white group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer rounded-sm" onclick="openLightbox('./img/12.png')">
+                <img src="./img/12.png" alt="White Riviera Suit" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-3 sm:p-6 flex flex-col justify-end">
+                    <span class="text-gold text-[10px] sm:text-xs uppercase tracking-widest">Resort & Wedding</span>
+                    <h4 class="font-serif text-xs sm:text-lg text-white font-medium">Off-White Linen Riviera Suit</h4>
                 </div>
             </div>
-            <div class="gallery-item white group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer" onclick="openLightbox('./img/13.png')">
-                <img src="./img/13.png" alt="White Suit Detail" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="gallery-item white group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer rounded-sm" onclick="openLightbox('./img/13.png')">
+                <img src="./img/13.png" alt="White Suit Detail" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
             </div>
-            <div class="gallery-item white group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer" onclick="openLightbox('./img/14.png')">
-                <img src="./img/14.png" alt="White Suit Seated" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="gallery-item white group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer rounded-sm" onclick="openLightbox('./img/14.png')">
+                <img src="./img/14.png" alt="White Suit Seated" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
             </div>
 
-            <div class="gallery-item workshop group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer" onclick="openLightbox('./img/1.png')">
-                <img src="./img/1.png" alt="Workshop Suit 1" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="gallery-item workshop group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer rounded-sm" onclick="openLightbox('./img/1.png')">
+                <img src="./img/1.png" alt="Workshop Suit 1" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
             </div>
-            <div class="gallery-item workshop group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer" onclick="openLightbox('./img/2.png')">
-                <img src="./img/2.png" alt="Workshop Suit 2" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="gallery-item workshop group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer rounded-sm" onclick="openLightbox('./img/2.png')">
+                <img src="./img/2.png" alt="Workshop Suit 2" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
             </div>
-            <div class="gallery-item workshop group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer" onclick="openLightbox('./img/3.png')">
-                <img src="./img/3.png" alt="Workshop Suit 3" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="gallery-item workshop group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer rounded-sm" onclick="openLightbox('./img/3.png')">
+                <img src="./img/3.png" alt="Workshop Suit 3" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
             </div>
-            <div class="gallery-item workshop group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer" onclick="openLightbox('./img/4.png')">
-                <img src="./img/4.png" alt="Workshop Suit 4" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="gallery-item workshop group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer rounded-sm" onclick="openLightbox('./img/4.png')">
+                <img src="./img/4.png" alt="Workshop Suit 4" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
             </div>
-            <div class="gallery-item workshop group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer" onclick="openLightbox('./img/5.png')">
-                <img src="./img/5.png" alt="Workshop Suit 5" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="gallery-item workshop group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer rounded-sm" onclick="openLightbox('./img/5.png')">
+                <img src="./img/5.png" alt="Workshop Suit 5" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
             </div>
-            <div class="gallery-item workshop group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer" onclick="openLightbox('./img/15.png')">
-                <img src="./img/15.png" alt="Featured Suit" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="gallery-item workshop group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer rounded-sm" onclick="openLightbox('./img/15.png')">
+                <img src="./img/15.png" alt="Featured Suit" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
             </div>
         </div>
     </section>
 
     <!-- Craftsmanship / Bespoke Process Section -->
-    <section id="craftsmanship" class="scroll-mt-20 py-20 px-6 max-w-7xl mx-auto border-t border-gold/10">
-        <div class="text-center mb-16">
-            <span class="text-gold tracking-[0.25em] uppercase text-xs font-semibold block mb-2">ARTISANAL EXCELLENCE</span>
-            <h2 class="font-serif text-3xl sm:text-4xl text-white tracking-wide font-bold">THE BESPOKE JOURNEY</h2>
+    <section id="craftsmanship" class="scroll-mt-20 py-16 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto border-t border-gold/10">
+        <div class="text-center mb-10 md:mb-16">
+            <span class="text-gold tracking-[0.25em] uppercase text-[10px] sm:text-xs font-semibold block mb-1.5">ARTISANAL EXCELLENCE</span>
+            <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-white tracking-wide font-bold">THE BESPOKE JOURNEY</h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <!-- Step 1: Đo đạc & Chọn vải -->
-            <div class="glass-panel p-6 text-center relative flex flex-col items-center">
-                <span class="text-gold/30 font-serif text-5xl font-bold absolute top-3 right-4">01</span>
-                <div class="text-gold text-2xl mb-4 mt-2"><i class="fas fa-tape"></i></div>
-                <h3 class="font-serif text-lg text-white font-semibold mb-2">Consultation & Fit</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+            <!-- Step 1 -->
+            <div class="glass-panel p-6 text-center relative flex flex-col items-center rounded-sm">
+                <span class="text-gold/20 font-serif text-4xl sm:text-5xl font-bold absolute top-3 right-4">01</span>
+                <div class="text-gold text-2xl mb-3 mt-1"><i class="fas fa-tape"></i></div>
+                <h3 class="font-serif text-base sm:text-lg text-white font-semibold mb-2">Consultation & Fit</h3>
                 <p class="text-gray-400 text-xs leading-relaxed">
                     We meet at your residence or hotel to take precise body measurements and help you select your preferred fabric.
                 </p>
             </div>
 
-            <!-- Step 2: Cắt vải & Ráp khung canvas -->
-            <div class="glass-panel p-6 text-center relative flex flex-col items-center">
-                <span class="text-gold/30 font-serif text-5xl font-bold absolute top-3 right-4">02</span>
-                <div class="text-gold text-2xl mb-4 mt-2"><i class="fas fa-scissors"></i></div>
-                <h3 class="font-serif text-lg text-white font-semibold mb-2">Cutting & Drafting</h3>
+            <!-- Step 2 -->
+            <div class="glass-panel p-6 text-center relative flex flex-col items-center rounded-sm">
+                <span class="text-gold/20 font-serif text-4xl sm:text-5xl font-bold absolute top-3 right-4">02</span>
+                <div class="text-gold text-2xl mb-3 mt-1"><i class="fas fa-scissors"></i></div>
+                <h3 class="font-serif text-base sm:text-lg text-white font-semibold mb-2">Cutting & Drafting</h3>
                 <p class="text-gray-400 text-xs leading-relaxed">
                     Our master tailor cuts the chosen cloth and hand-assembles the initial garment canvas frame at the workshop.
                 </p>
             </div>
 
-            <!-- Step 3: Tới tận nơi thử phom Basted Fitting -->
-            <div class="glass-panel p-6 text-center relative flex flex-col items-center">
-                <span class="text-gold/30 font-serif text-5xl font-bold absolute top-3 right-4">03</span>
-                <div class="text-gold text-2xl mb-4 mt-2"><i class="fas fa-user-check"></i></div>
-                <h3 class="font-serif text-lg text-white font-semibold mb-2">Doorstep Fitting</h3>
+            <!-- Step 3 -->
+            <div class="glass-panel p-6 text-center relative flex flex-col items-center rounded-sm">
+                <span class="text-gold/20 font-serif text-4xl sm:text-5xl font-bold absolute top-3 right-4">03</span>
+                <div class="text-gold text-2xl mb-3 mt-1"><i class="fas fa-user-check"></i></div>
+                <h3 class="font-serif text-base sm:text-lg text-white font-semibold mb-2">Doorstep Fitting</h3>
                 <p class="text-gray-400 text-xs leading-relaxed">
                     We visit your location directly for a basted fitting session to fine-tune the fit, posture, and drape.
                 </p>
             </div>
 
-            <!-- Step 4: Hoàn thiện & Giao hàng tận nơi -->
-            <div class="glass-panel p-6 text-center relative flex flex-col items-center">
-                <span class="text-gold/30 font-serif text-5xl font-bold absolute top-3 right-4">04</span>
-                <div class="text-gold text-2xl mb-4 mt-2"><i class="fas fa-gem"></i></div>
-                <h3 class="font-serif text-lg text-white font-semibold mb-2">Finishing & Delivery</h3>
+            <!-- Step 4 -->
+            <div class="glass-panel p-6 text-center relative flex flex-col items-center rounded-sm">
+                <span class="text-gold/20 font-serif text-4xl sm:text-5xl font-bold absolute top-3 right-4">04</span>
+                <div class="text-gold text-2xl mb-3 mt-1"><i class="fas fa-gem"></i></div>
+                <h3 class="font-serif text-base sm:text-lg text-white font-semibold mb-2">Finishing & Delivery</h3>
                 <p class="text-gray-400 text-xs leading-relaxed">
                     Our artisans complete all fine hand-stitching, lining, and final press before hand-delivering your completed suit.
                 </p>
@@ -252,27 +285,27 @@
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="scroll-mt-20 py-24 px-6 bg-[#0A0A0B]">
-        <div class="max-w-5xl mx-auto text-center">
-            <div class="glass-panel p-8 sm:p-12 md:p-16 relative overflow-hidden">
-                <span class="text-xs tracking-[0.25em] text-gold uppercase mb-2 block font-semibold">TRANSPARENT INVESTMENT</span>
-                <h2 class="text-2xl md:text-4xl font-serif text-white font-bold mb-6 tracking-wide">BESPOKE PRICING</h2>
+    <section id="pricing" class="scroll-mt-20 py-16 md:py-24 px-4 sm:px-6 bg-[#0A0A0B]">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="glass-panel p-6 sm:p-12 md:p-16 relative overflow-hidden rounded-sm">
+                <span class="text-[10px] sm:text-xs tracking-[0.25em] text-gold uppercase mb-2 block font-semibold">TRANSPARENT INVESTMENT</span>
+                <h2 class="text-2xl md:text-4xl font-serif text-white font-bold mb-4 md:mb-6 tracking-wide">BESPOKE PRICING</h2>
                 
-                <div class="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-gold font-bold mb-2 tracking-tight whitespace-nowrap">
+                <div class="text-2xl sm:text-4xl md:text-5xl font-serif text-gold font-bold mb-1 tracking-tight">
                     STARTING FROM 4,000,000 VND
                 </div>
-                <p class="text-gray-300 text-base md:text-lg font-medium mb-8">(~$150 USD)</p>
+                <p class="text-gray-300 text-sm md:text-lg font-medium mb-6 md:mb-8">(~$150 USD)</p>
 
-                <p class="text-gray-300 text-sm md:text-base max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
+                <p class="text-gray-300 text-xs sm:text-sm md:text-base max-w-2xl mx-auto mb-8 leading-relaxed font-normal">
                     Includes your choice of premium fabrics, custom hand-stitched Bespoke construction, basted fitting session, and doorstep delivery within 3–7 days.
                 </p>
 
-                <div class="flex flex-wrap items-center justify-center gap-4">
-                    <a href="https://wa.me/84339447859" target="_blank" class="bg-gold text-black font-semibold px-8 py-4 text-xs tracking-[0.2em] uppercase hover:bg-goldlight transition flex items-center justify-center space-x-2">
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
+                    <a href="https://wa.me/84339447859" target="_blank" class="w-full sm:w-auto min-h-[44px] bg-gold text-black font-bold px-8 py-3.5 text-xs tracking-[0.2em] uppercase hover:bg-goldlight transition flex items-center justify-center space-x-2">
                         <i class="fab fa-whatsapp text-base"></i>
                         <span>WhatsApp Booking</span>
                     </a>
-                    <a href="https://zalo.me/0965811674" target="_blank" class="border border-gold text-gold font-semibold px-8 py-4 text-xs tracking-[0.2em] uppercase hover:bg-gold hover:text-black transition flex items-center justify-center space-x-2">
+                    <a href="https://zalo.me/0965811674" target="_blank" class="w-full sm:w-auto min-h-[44px] border border-gold text-gold font-semibold px-8 py-3.5 text-xs tracking-[0.2em] uppercase hover:bg-gold hover:text-black transition flex items-center justify-center space-x-2">
                         <span class="font-bold text-[10px] bg-gold text-black px-1 rounded-sm">ZALO</span>
                         <span>Zalo Chat</span>
                     </a>
@@ -282,71 +315,68 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-darkbg py-12 px-6 text-center border-t border-gold/10 pb-28 md:pb-12">
-        <p class="text-gray-400 text-sm mb-6 tracking-wide">&copy; 2026 NORIST Bespoke Tailoring - Da Nang. All rights reserved.</p>
-        
-        <div class="flex flex-wrap items-center justify-center gap-6 text-gray-300 text-xs tracking-wider uppercase">
-            <a href="https://wa.me/84339447859" target="_blank" class="hover:text-gold transition flex items-center gap-2">
-                <i class="fab fa-whatsapp text-base"></i> WhatsApp
-            </a>
-            <a href="https://zalo.me/0965811674" target="_blank" class="hover:text-gold transition flex items-center gap-2">
-                <span class="font-bold text-[10px] border border-current px-1.5 py-0.5 rounded">ZALO</span> Zalo Chat
-            </a>
-            <a href="tel:+84339447859" class="hover:text-gold transition flex items-center gap-2">
-                <i class="fas fa-phone-alt text-sm"></i> Phone Call
-            </a>
-            <a href="sms:+84339447859" class="hover:text-gold transition flex items-center gap-2">
-                <i class="fas fa-comment-alt text-sm"></i> SMS / iMessage
-            </a>
-        </div>
+    <footer class="bg-darkbg py-10 md:py-12 px-6 text-center border-t border-gold/10 pb-28 md:pb-12">
+        <p class="text-gray-400 text-xs sm:text-sm mb-4 md:mb-6 tracking-wide">&copy; 2026 NORIST Bespoke Tailoring - Da Nang. All rights reserved.</p>
+        <p class="text-gray-500 text-[11px] tracking-wider uppercase">Private At-Home & Hotel Fitting Service Available Daily</p>
     </footer>
 
-    <!-- Mobile Sticky CTA Bar -->
-    <div class="fixed bottom-0 left-0 right-0 z-40 md:hidden glass-panel border-t border-gold/20 p-2.5 grid grid-cols-4 gap-2">
-        <a href="tel:+84339447859" class="bg-darkbg border border-gold/40 text-gold text-center py-2.5 text-[10px] tracking-wider uppercase font-semibold flex flex-col items-center justify-center gap-1">
+    <!-- Mobile Sticky CTA Bar (Tối ưu 3 nút chính, viền gọt sắc nét, hỗ trợ safe area bottom) -->
+    <div class="fixed bottom-0 left-0 right-0 z-40 md:hidden glass-panel border-t border-gold/30 px-3 py-2.5 pb-safe grid grid-cols-3 gap-2 shadow-2xl">
+        <a href="tel:+84339447859" class="bg-darkbg border border-gold/40 text-gold text-center py-2.5 rounded-sm text-[10px] tracking-wider uppercase font-semibold flex flex-col items-center justify-center gap-1 active:bg-gold/10">
             <i class="fas fa-phone-alt text-xs"></i>
-            <span>Call</span>
+            <span>CALL US</span>
         </a>
-        <a href="sms:+84339447859" class="bg-darkbg border border-gold/40 text-gold text-center py-2.5 text-[10px] tracking-wider uppercase font-semibold flex flex-col items-center justify-center gap-1">
-            <i class="fas fa-comment-alt text-xs"></i>
-            <span>SMS</span>
-        </a>
-        <a href="https://wa.me/84339447859" target="_blank" class="bg-gold text-black text-center py-2.5 text-[10px] tracking-wider uppercase font-bold flex flex-col items-center justify-center gap-1">
+        <a href="https://wa.me/84339447859" target="_blank" class="bg-gold text-black text-center py-2.5 rounded-sm text-[10px] tracking-wider uppercase font-bold flex flex-col items-center justify-center gap-1 shadow-lg active:bg-goldlight">
             <i class="fab fa-whatsapp text-sm"></i>
-            <span>WhatsApp</span>
+            <span>WHATSAPP</span>
         </a>
-        <a href="https://zalo.me/0965811674" target="_blank" class="border border-gold text-gold text-center py-2.5 text-[10px] tracking-wider uppercase font-bold flex flex-col items-center justify-center gap-1">
+        <a href="https://zalo.me/0965811674" target="_blank" class="bg-darkbg border border-gold text-gold text-center py-2.5 rounded-sm text-[10px] tracking-wider uppercase font-bold flex flex-col items-center justify-center gap-1 active:bg-gold/10">
             <span class="font-black text-[9px] bg-gold text-black px-1 rounded-sm leading-none">ZALO</span>
-            <span>Zalo</span>
+            <span>ZALO CHAT</span>
         </a>
     </div>
 
-    <!-- Lightbox Modal Cải Tiến (Có Nút Mũi Tên, Vuốt ĐT, Bộ Đếm) -->
-    <div id="lightbox" class="fixed inset-0 z-50 bg-black/95 hidden items-center justify-center p-4 select-none" onclick="closeLightbox()">
+    <!-- Lightbox Modal Cải Tiến (Nút to dễ bấm trên ĐT, cảm ứng Vuốt, Bộ đếm) -->
+    <div id="lightbox" class="fixed inset-0 z-50 bg-black/95 hidden items-center justify-center p-2 sm:p-4 select-none" onclick="closeLightbox()">
         <!-- Nút Đóng -->
-        <button onclick="closeLightbox()" class="absolute top-5 right-5 text-white/70 hover:text-gold text-3xl z-50 p-2 transition focus:outline-none">
+        <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white/80 hover:text-gold text-2xl md:text-3xl z-50 p-3 transition focus:outline-none" aria-label="Close Lightbox">
             <i class="fas fa-times"></i>
         </button>
 
         <!-- Nút Trái (Ảnh trước) -->
-        <button onclick="prevImage(event)" class="absolute left-3 md:left-6 text-white/70 hover:text-gold text-xl md:text-3xl z-50 w-10 h-10 md:w-14 md:h-14 flex items-center justify-center bg-black/50 hover:bg-black/80 rounded-full transition glass-panel focus:outline-none">
+        <button onclick="prevImage(event)" class="absolute left-2 md:left-6 text-white/80 hover:text-gold text-lg md:text-2xl z-50 w-11 h-11 md:w-14 md:h-14 flex items-center justify-center bg-black/60 hover:bg-black/90 rounded-full transition border border-gold/30 focus:outline-none" aria-label="Previous Image">
             <i class="fas fa-chevron-left"></i>
         </button>
 
         <!-- Nút Phải (Ảnh sau) -->
-        <button onclick="nextImage(event)" class="absolute right-3 md:right-6 text-white/70 hover:text-gold text-xl md:text-3xl z-50 w-10 h-10 md:w-14 md:h-14 flex items-center justify-center bg-black/50 hover:bg-black/80 rounded-full transition glass-panel focus:outline-none">
+        <button onclick="nextImage(event)" class="absolute right-2 md:right-6 text-white/80 hover:text-gold text-lg md:text-2xl z-50 w-11 h-11 md:w-14 md:h-14 flex items-center justify-center bg-black/60 hover:bg-black/90 rounded-full transition border border-gold/30 focus:outline-none" aria-label="Next Image">
             <i class="fas fa-chevron-right"></i>
         </button>
 
         <!-- Khung Ảnh & Bộ Đếm -->
-        <div class="relative max-h-[85vh] max-w-[90vw] flex flex-col items-center justify-center" onclick="event.stopPropagation()">
-            <img id="lightbox-img" src="" class="max-h-[80vh] max-w-[90vw] object-contain border border-gold/20 shadow-2xl transition duration-300">
-            <div id="lightbox-counter" class="text-xs text-gold tracking-[0.2em] uppercase mt-4 font-semibold"></div>
+        <div class="relative max-h-[85vh] max-w-[92vw] flex flex-col items-center justify-center" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" class="max-h-[78vh] max-w-[92vw] object-contain border border-gold/20 shadow-2xl transition duration-300">
+            <div id="lightbox-counter" class="text-[11px] sm:text-xs text-gold tracking-[0.2em] uppercase mt-3 font-semibold"></div>
         </div>
     </div>
 
     <!-- Scripts -->
     <script>
+        // Toggle Mobile Menu Dropdown
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+
         let currentImageIndex = 0;
         let activeImageSources = [];
 
@@ -355,12 +385,12 @@
             const buttons = document.querySelectorAll('.tab-btn');
             
             buttons.forEach(btn => {
-                btn.classList.remove('bg-gold', 'text-black', 'font-semibold', 'border-gold');
+                btn.classList.remove('bg-gold', 'text-black', 'font-semibold', 'border-gold', 'active');
                 btn.classList.add('text-gray-300', 'border-white/20');
             });
 
             if (evt && evt.currentTarget) {
-                evt.currentTarget.classList.add('bg-gold', 'text-black', 'font-semibold', 'border-gold');
+                evt.currentTarget.classList.add('bg-gold', 'text-black', 'font-semibold', 'border-gold', 'active');
                 evt.currentTarget.classList.remove('text-gray-300', 'border-white/20');
             }
 
@@ -416,7 +446,7 @@
             updateLightbox();
         }
 
-        // Điều hướng bằng phím mũi tên bàn phím (Left / Right / Esc)
+        // Bàn phím máy tính (ArrowLeft / ArrowRight / Esc)
         document.addEventListener('keydown', function(e) {
             const lightbox = document.getElementById('lightbox');
             if (!lightbox.classList.contains('hidden')) {
@@ -426,7 +456,7 @@
             }
         });
 
-        // Điều hướng bằng cử chỉ vuốt (Swipe) trên màn hình cảm ứng
+        // Điều hướng bằng cử chỉ vuốt (Swipe) trên màn hình cảm ứng điện thoại
         let touchStartX = 0;
         let touchEndX = 0;
         const lightboxEl = document.getElementById('lightbox');
@@ -441,13 +471,13 @@
         }, { passive: true });
 
         function handleSwipe() {
-            const minDistance = 40; // Khoảng cách tối thiểu để tính là hành động vuốt
+            const minDistance = 35; // Khoảng cách tối thiểu để tính vuốt
             const distance = touchEndX - touchStartX;
             if (Math.abs(distance) > minDistance) {
                 if (distance < 0) {
-                    nextImage(); // Vuốt sang trái -> xem ảnh tiếp
+                    nextImage(); // Vuốt trái -> Xem ảnh sau
                 } else {
-                    prevImage(); // Vuốt sang phải -> xem ảnh trước
+                    prevImage(); // Vuốt phải -> Xem ảnh trước
                 }
             }
         }
