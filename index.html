@@ -129,11 +129,11 @@
 
         <!-- Filter Tabs -->
         <div class="flex flex-wrap justify-center gap-3 mb-12">
-            <button onclick="filterGallery('all')" class="tab-btn active text-xs uppercase tracking-widest px-5 py-2.5 border border-gold bg-gold text-black font-semibold transition">All Works</button>
-            <button onclick="filterGallery('red')" class="tab-btn text-xs uppercase tracking-widest px-5 py-2.5 border border-white/20 text-gray-300 hover:text-white transition">Classic Black</button>
-            <button onclick="filterGallery('black')" class="tab-btn text-xs uppercase tracking-widest px-5 py-2.5 border border-white/20 text-gray-300 hover:text-white transition">Crimson Lounge</button>
-            <button onclick="filterGallery('white')" class="tab-btn text-xs uppercase tracking-widest px-5 py-2.5 border border-white/20 text-gray-300 hover:text-white transition">Riviera Resort</button>
-            <button onclick="filterGallery('workshop')" class="tab-btn text-xs uppercase tracking-widest px-5 py-2.5 border border-white/20 text-gray-300 hover:text-white transition">Craftsmanship</button>
+            <button onclick="filterGallery('all', event)" class="tab-btn active text-xs uppercase tracking-widest px-5 py-2.5 border border-gold bg-gold text-black font-semibold transition">All Works</button>
+            <button onclick="filterGallery('red', event)" class="tab-btn text-xs uppercase tracking-widest px-5 py-2.5 border border-white/20 text-gray-300 hover:text-white transition">Classic Black</button>
+            <button onclick="filterGallery('black', event)" class="tab-btn text-xs uppercase tracking-widest px-5 py-2.5 border border-white/20 text-gray-300 hover:text-white transition">Crimson Lounge</button>
+            <button onclick="filterGallery('white', event)" class="tab-btn text-xs uppercase tracking-widest px-5 py-2.5 border border-white/20 text-gray-300 hover:text-white transition">Riviera Resort</button>
+            <button onclick="filterGallery('workshop', event)" class="tab-btn text-xs uppercase tracking-widest px-5 py-2.5 border border-white/20 text-gray-300 hover:text-white transition">Craftsmanship</button>
         </div>
 
         <!-- Image Grid -->
@@ -201,18 +201,16 @@
         </div>
     </section>
 
-    <!-- Pricing Section (Giá Nằm Trên 1 Dòng + USD Rõ Hơn) -->
+    <!-- Pricing Section -->
     <section id="pricing" class="py-24 px-6 bg-[#0A0A0B]">
         <div class="max-w-5xl mx-auto text-center">
             <div class="glass-panel p-8 sm:p-12 md:p-16 relative overflow-hidden">
                 <span class="text-xs tracking-[0.25em] text-gold uppercase mb-2 block font-semibold">TRANSPARENT INVESTMENT</span>
                 <h2 class="text-2xl md:text-4xl font-serif text-white font-bold mb-6 tracking-wide">BESPOKE PRICING</h2>
                 
-                <!-- Hiển thị nguyên 1 hàng trên mọi màn hình -->
                 <div class="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-gold font-bold mb-2 tracking-tight whitespace-nowrap">
                     STARTING FROM 4,000,000 VND
                 </div>
-                <!-- Dòng USD to hơn và sáng hơn -->
                 <p class="text-gray-300 text-base md:text-lg font-medium mb-8">(~$150 USD)</p>
 
                 <p class="text-gray-300 text-sm md:text-base max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
@@ -237,7 +235,6 @@
     <footer class="bg-darkbg py-12 px-6 text-center border-t border-gold/10 pb-28 md:pb-12">
         <p class="text-gray-400 text-sm mb-6 tracking-wide">&copy; 2026 NORIST Bespoke Tailoring - Da Nang. All rights reserved.</p>
         
-        <!-- Các kênh liên hệ ở Footer -->
         <div class="flex flex-wrap items-center justify-center gap-6 text-gray-300 text-xs tracking-wider uppercase">
             <a href="https://wa.me/84339447859" target="_blank" class="hover:text-gold transition flex items-center gap-2">
                 <i class="fab fa-whatsapp text-base"></i> WhatsApp
@@ -254,7 +251,7 @@
         </div>
     </footer>
 
-    <!-- Mobile Sticky CTA Bar (Đầy đủ Gọi điện, iMessage/SMS, WhatsApp, Zalo) -->
+    <!-- Mobile Sticky CTA Bar -->
     <div class="fixed bottom-0 left-0 right-0 z-40 md:hidden glass-panel border-t border-gold/20 p-2.5 grid grid-cols-4 gap-2">
         <a href="tel:+84339447859" class="bg-darkbg border border-gold/40 text-gold text-center py-2.5 text-[10px] tracking-wider uppercase font-semibold flex flex-col items-center justify-center gap-1">
             <i class="fas fa-phone-alt text-xs"></i>
@@ -274,14 +271,36 @@
         </a>
     </div>
 
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="fixed inset-0 z-50 bg-black/95 hidden items-center justify-center p-4" onclick="closeLightbox()">
-        <img id="lightbox-img" src="" class="max-h-[90vh] max-w-[90vw] object-contain border border-gold/20">
+    <!-- Lightbox Modal Cải Tiến (Có Nút Mũi Tên, Vuốt ĐT, Bộ Đếm) -->
+    <div id="lightbox" class="fixed inset-0 z-50 bg-black/95 hidden items-center justify-center p-4 select-none" onclick="closeLightbox()">
+        <!-- Nút Đóng -->
+        <button onclick="closeLightbox()" class="absolute top-5 right-5 text-white/70 hover:text-gold text-3xl z-50 p-2 transition focus:outline-none">
+            <i class="fas fa-times"></i>
+        </button>
+
+        <!-- Nút Trái (Ảnh trước) -->
+        <button onclick="prevImage(event)" class="absolute left-3 md:left-6 text-white/70 hover:text-gold text-xl md:text-3xl z-50 w-10 h-10 md:w-14 md:h-14 flex items-center justify-center bg-black/50 hover:bg-black/80 rounded-full transition glass-panel focus:outline-none">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <!-- Nút Phải (Ảnh sau) -->
+        <button onclick="nextImage(event)" class="absolute right-3 md:right-6 text-white/70 hover:text-gold text-xl md:text-3xl z-50 w-10 h-10 md:w-14 md:h-14 flex items-center justify-center bg-black/50 hover:bg-black/80 rounded-full transition glass-panel focus:outline-none">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <!-- Khung Ảnh & Bộ Đếm -->
+        <div class="relative max-h-[85vh] max-w-[90vw] flex flex-col items-center justify-center" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" class="max-h-[80vh] max-w-[90vw] object-contain border border-gold/20 shadow-2xl transition duration-300">
+            <div id="lightbox-counter" class="text-xs text-gold tracking-[0.2em] uppercase mt-4 font-semibold"></div>
+        </div>
     </div>
 
     <!-- Scripts -->
     <script>
-        function filterGallery(category) {
+        let currentImageIndex = 0;
+        let activeImageSources = [];
+
+        function filterGallery(category, evt) {
             const items = document.querySelectorAll('.gallery-item');
             const buttons = document.querySelectorAll('.tab-btn');
             
@@ -290,8 +309,10 @@
                 btn.classList.add('text-gray-300', 'border-white/20');
             });
 
-            event.currentTarget.classList.add('bg-gold', 'text-black', 'font-semibold', 'border-gold');
-            event.currentTarget.classList.remove('text-gray-300', 'border-white/20');
+            if (evt && evt.currentTarget) {
+                evt.currentTarget.classList.add('bg-gold', 'text-black', 'font-semibold', 'border-gold');
+                evt.currentTarget.classList.remove('text-gray-300', 'border-white/20');
+            }
 
             items.forEach(item => {
                 if (category === 'all' || item.classList.contains(category)) {
@@ -302,8 +323,26 @@
             });
         }
 
+        // Lấy danh sách ảnh đang hiển thị theo tab lọc hiện tại
+        function getVisibleImages() {
+            const items = Array.from(document.querySelectorAll('.gallery-item'));
+            return items
+                .filter(item => getComputedStyle(item).display !== 'none')
+                .map(item => item.querySelector('img').getAttribute('src'));
+        }
+
+        function updateLightbox() {
+            if (activeImageSources.length === 0) return;
+            document.getElementById('lightbox-img').src = activeImageSources[currentImageIndex];
+            document.getElementById('lightbox-counter').innerText = `${currentImageIndex + 1} / ${activeImageSources.length}`;
+        }
+
         function openLightbox(src) {
-            document.getElementById('lightbox-img').src = src;
+            activeImageSources = getVisibleImages();
+            currentImageIndex = activeImageSources.indexOf(src);
+            if (currentImageIndex === -1) currentImageIndex = 0;
+
+            updateLightbox();
             document.getElementById('lightbox').classList.remove('hidden');
             document.getElementById('lightbox').classList.add('flex');
         }
@@ -311,6 +350,56 @@
         function closeLightbox() {
             document.getElementById('lightbox').classList.add('hidden');
             document.getElementById('lightbox').classList.remove('flex');
+        }
+
+        function nextImage(e) {
+            if (e) e.stopPropagation();
+            if (activeImageSources.length === 0) return;
+            currentImageIndex = (currentImageIndex + 1) % activeImageSources.length;
+            updateLightbox();
+        }
+
+        function prevImage(e) {
+            if (e) e.stopPropagation();
+            if (activeImageSources.length === 0) return;
+            currentImageIndex = (currentImageIndex - 1 + activeImageSources.length) % activeImageSources.length;
+            updateLightbox();
+        }
+
+        // Điều hướng bằng phím mũi tên bàn phím (Left / Right / Esc)
+        document.addEventListener('keydown', function(e) {
+            const lightbox = document.getElementById('lightbox');
+            if (!lightbox.classList.contains('hidden')) {
+                if (e.key === 'ArrowRight') nextImage();
+                if (e.key === 'ArrowLeft') prevImage();
+                if (e.key === 'Escape') closeLightbox();
+            }
+        });
+
+        // Điều hướng bằng cử chỉ vuốt (Swipe) trên màn hình cảm ứng
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const lightboxEl = document.getElementById('lightbox');
+
+        lightboxEl.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        lightboxEl.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const minDistance = 40; // Khoảng cách tối thiểu để tính là hành động vuốt
+            const distance = touchEndX - touchStartX;
+            if (Math.abs(distance) > minDistance) {
+                if (distance < 0) {
+                    nextImage(); // Vuốt sang trái -> xem ảnh tiếp
+                } else {
+                    prevImage(); // Vuốt sang phải -> xem ảnh trước
+                }
+            }
         }
     </script>
 </body>
