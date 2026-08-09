@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NORIST Bespoke Tailoring | Handcrafted Half-Canvas Suits in Da Nang</title>
+    <!-- Favicon Logo -->
+    <link rel="icon" type="image/png" href="img/logo-bg.png">
+    <title>NORIST - Bespoke Tailoring Da Nang</title>
+
     <meta name="description" content="Saigon's master tailor bringing private at-home bespoke suit fitting to Da Nang. Handcrafted Half-Canvas suits starting from $280.">
     
     <!-- Open Graph / Social Media -->
@@ -46,7 +49,10 @@
     <!-- Navigation -->
     <nav class="fixed w-full z-40 glass-panel border-b border-gold/10">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="font-serif text-2xl tracking-[0.2em] text-gold font-bold">NORIST</a>
+            <!-- Thay thế chữ NORIST cũ bằng đoạn này -->
+            <a href="#" class="flex items-center gap-3">
+                <img src="img/logo-bg1.png" alt="NORIST Bespoke Tailoring" class="h-24 md:h-26 w-auto object-contain rounded">
+            </a>
             <div class="hidden md:flex space-x-8 text-xs tracking-[0.15em] uppercase text-gray-300">
                 <a href="#why-us" class="hover:text-gold transition">Why Us</a>
                 <a href="#collection" class="hover:text-gold transition">Collection</a>
@@ -68,12 +74,19 @@
         </div>
 
         <div class="relative z-10 max-w-4xl mx-auto text-center px-6 py-12">
-            <span class="text-gold tracking-[0.3em] uppercase text-xs font-semibold block mb-4">Saigon Artisan Craftsmanship • Da Nang</span>
-            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
-                THE ART OF <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-gold via-goldlight to-gold">HALF-CANVAS</span> TAILORING
+            <!-- Subtitle -->
+            <span class="text-xs md:text-sm tracking-[0.3em] text-[#C5A059] uppercase mb-3 block font-semibold">
+            LUXURY BESPOKE TAILORING • DA NANG
+            </span>
+
+            <!-- Main Title -->
+            <h1 class="text-3xl md:text-6xl font-serif text-white font-bold mb-6 tracking-wide leading-tight">
+            THE ART OF BESPOKE TAILORING
             </h1>
-            <p class="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto mb-10 leading-relaxed font-light">
-                Dressing Saigon’s finest artists and performers — now bringing private at-home bespoke fitting directly to your hotel, residence, or office in Da Nang.
+
+            <!-- Description -->
+            <p class="text-gray-400 text-sm md:text-base max-w-2xl mx-auto mb-8 font-light leading-relaxed">
+            Bringing private at-home bespoke fitting directly to your hotel, residence, or office in Da Nang.
             </p>
             
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -195,23 +208,48 @@
     </section>
 
     <!-- Pricing Section -->
-    <section class="py-20 px-6 max-w-4xl mx-auto text-center">
-        <div class="glass-panel p-10 md:p-16 relative overflow-hidden">
-            <span class="text-gold tracking-[0.2em] uppercase text-xs font-semibold block mb-2">Transparent Investment</span>
-            <h2 class="font-serif text-3xl sm:text-4xl text-white mb-6">BESPOKE PRICING</h2>
-            <div class="text-4xl sm:text-5xl font-serif text-gold font-bold mb-4">Starting from 7,000,000 VND <span class="text-xl font-sans text-gray-400 font-normal">(~$280 USD)</span></div>
-            <p class="text-gray-400 text-sm max-w-xl mx-auto mb-8 font-light leading-relaxed">Includes 100% imported wool/linen fabric, custom hand-stitched Half-Canvas construction, basted fitting session, and doorstep delivery within 10–14 days.</p>
-            <a href="https://wa.me/84905000000" target="_blank" class="inline-block bg-gold text-black font-semibold px-8 py-4 text-xs tracking-[0.2em] uppercase hover:bg-goldlight transition">Book Private Consultation</a>
+    <section id="pricing" class="py-24 px-6 bg-[#0A0A0B]">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="glass-panel p-10 md:p-16 relative overflow-hidden">
+                <span class="text-xs tracking-[0.25em] text-[#C5A059] uppercase mb-2 block font-medium">TRANSPARENT INVESTMENT</span>
+                <h2 class="text-2xl md:text-4xl font-serif text-white font-bold mb-4 tracking-wide">BESPOKE PRICING</h2>
+                
+                <!-- Mức giá mới -->
+                <div class="text-3xl md:text-5xl font-serif text-[#C5A059] font-bold mb-1">
+                    STARTING FROM 4,500,000 VND
+                </div>
+                <p class="text-gray-400 text-xs md:text-sm mb-6">(~$180 USD)</p>
+
+                <!-- Mô tả đã xóa Half-Canvas -->
+                <p class="text-gray-400 text-xs md:text-sm max-w-xl mx-auto mb-8 font-light leading-relaxed">
+                    Includes 100% imported wool/linen fabric, custom hand-stitched Bespoke construction, basted fitting session, and doorstep delivery within 10–14 days.
+                </p>
+
+                <a href="https://wa.me/84905000000" target="_blank" class="inline-block bg-[#C5A059] text-black font-semibold px-8 py-4 text-xs tracking-[0.2em] uppercase hover:bg-goldlight transition flex items-center justify-center space-x-2 mx-auto">
+                    <i class="fab fa-whatsapp text-base"></i>
+                    <span>WhatsApp Booking</span>
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- Footer CTA Bar (Mobile Sticky) -->
+    <!-- Footer & Mobile CTA Bar -->
+    <footer class="bg-darkbg py-12 px-6 text-center border-t border-gold/10">
+        <p class="text-gray-400 text-sm mb-4 tracking-wide">&copy; 2026 NORIST Bespoke Tailoring — Da Nang. All rights reserved.</p>
+        <div class="flex items-center justify-center gap-4 text-gray-500 text-lg">
+            <a href="https://instagram.com" target="_blank" class="hover:text-gold transition"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/84905000000" target="_blank" class="hover:text-gold transition"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+
+    <!-- Mobile CTA Bar (Mobile Sticky) -->
     <div class="fixed bottom-0 left-0 right-0 z-40 md:hidden glass-panel border-t border-gold/20 p-3 flex gap-3">
         <a href="https://wa.me/84905000000" target="_blank" class="flex-1 bg-gold text-black text-center py-3 text-xs tracking-wider uppercase font-bold flex items-center justify-center space-x-2">
             <i class="fab fa-whatsapp text-sm"></i>
             <span>WhatsApp</span>
         </a>
-        <a href="https://zalo.me" target="_blank" class="flex-1 border border-gold text-gold text-center py-3 text-xs tracking-wider uppercase font-bold flex items-center justify-center space-x-2">
+        <!-- Đã correct link Zalo, thay số 84905000000 bằng số Zalo thật của bạn -->
+        <a href="https://zalo.me/84905000000" target="_blank" class="flex-1 border border-gold text-gold text-center py-3 text-xs tracking-wider uppercase font-bold flex items-center justify-center space-x-2">
             <i class="fas fa-comment text-sm"></i>
             <span>Zalo Chat</span>
         </a>
