@@ -18,7 +18,7 @@
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -63,34 +63,48 @@
             
             <!-- Desktop Navigation Links -->
             <div class="hidden md:flex space-x-8 text-xs tracking-[0.15em] uppercase text-gray-300 font-medium">
-                <a href="#why-us" class="hover:text-gold transition">Why Us</a>
-                <a href="#collection" class="hover:text-gold transition">Collection</a>
-                <a href="#craftsmanship" class="hover:text-gold transition">Craftsmanship</a>
-                <a href="#pricing" class="hover:text-gold transition">Pricing</a>
+                <a href="#why-us" data-i18n="nav_why_us" class="hover:text-gold transition">Why Us</a>
+                <a href="#collection" data-i18n="nav_collection" class="hover:text-gold transition">Collection</a>
+                <a href="#craftsmanship" data-i18n="nav_craftsmanship" class="hover:text-gold transition">Craftsmanship</a>
+                <a href="#pricing" data-i18n="nav_pricing" class="hover:text-gold transition">Pricing</a>
             </div>
 
-            <!-- Desktop Action Buttons -->
+            <!-- Desktop Action Buttons & Language Switcher -->
             <div class="hidden md:flex items-center space-x-3">
+                <!-- Language Toggle -->
+                <div class="flex items-center border border-gold/30 rounded px-1.5 py-1 text-[10px] font-semibold tracking-wider mr-1">
+                    <button onclick="changeLanguage('en')" id="btn-en" class="px-2 py-0.5 rounded transition">EN</button>
+                    <span class="text-gray-600 px-0.5">|</span>
+                    <button onclick="changeLanguage('vi')" id="btn-vi" class="px-2 py-0.5 rounded transition">VI</button>
+                </div>
+
                 <a href="tel:+84339447859" class="border border-gold/40 text-gold hover:border-gold hover:bg-gold/10 px-3.5 py-2 text-xs tracking-widest uppercase transition">
-                    <i class="fas fa-phone-alt mr-1"></i> Call
+                    <i class="fas fa-phone-alt mr-1"></i> <span data-i18n="btn_call">Call</span>
                 </a>
                 <a href="https://wa.me/84339447859" target="_blank" class="border border-gold text-gold hover:bg-gold hover:text-black px-4 py-2 text-xs tracking-widest uppercase transition duration-300">
-                    <i class="fab fa-whatsapp mr-1 text-sm"></i> WhatsApp
+                    <i class="fab fa-whatsapp mr-1 text-sm"></i> <span data-i18n="btn_whatsapp">WhatsApp</span>
                 </a>
             </div>
 
-            <!-- Mobile Hamburger Button -->
-            <button id="menu-btn" onclick="toggleMobileMenu()" class="md:hidden text-gold p-2 rounded focus:outline-none" aria-label="Toggle Navigation">
-                <i id="menu-icon" class="fas fa-bars text-xl"></i>
-            </button>
+            <!-- Mobile Controls (Language + Hamburger) -->
+            <div class="flex items-center space-x-3 md:hidden">
+                <div class="flex items-center border border-gold/30 rounded px-1.5 py-1 text-[10px] font-semibold tracking-wider">
+                    <button onclick="changeLanguage('en')" id="btn-en-mb" class="px-1.5 py-0.5 rounded transition">EN</button>
+                    <span class="text-gray-600 px-0.5">|</span>
+                    <button onclick="changeLanguage('vi')" id="btn-vi-mb" class="px-1.5 py-0.5 rounded transition">VI</button>
+                </div>
+                <button id="menu-btn" onclick="toggleMobileMenu()" class="text-gold p-2 rounded focus:outline-none" aria-label="Toggle Navigation">
+                    <i id="menu-icon" class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
         </div>
 
         <!-- Mobile Dropdown Navigation Menu -->
         <div id="mobile-menu" class="hidden md:hidden border-t border-gold/20 bg-darkbg/95 px-6 py-4 flex flex-col space-y-4 text-xs tracking-[0.2em] uppercase text-gray-200 font-medium border-b border-gold/20">
-            <a href="#why-us" onclick="toggleMobileMenu()" class="hover:text-gold transition py-1">Why Us</a>
-            <a href="#collection" onclick="toggleMobileMenu()" class="hover:text-gold transition py-1">Collection</a>
-            <a href="#craftsmanship" onclick="toggleMobileMenu()" class="hover:text-gold transition py-1">Craftsmanship</a>
-            <a href="#pricing" onclick="toggleMobileMenu()" class="hover:text-gold transition py-1">Pricing</a>
+            <a href="#why-us" onclick="toggleMobileMenu()" data-i18n="nav_why_us" class="hover:text-gold transition py-1">Why Us</a>
+            <a href="#collection" onclick="toggleMobileMenu()" data-i18n="nav_collection" class="hover:text-gold transition py-1">Collection</a>
+            <a href="#craftsmanship" onclick="toggleMobileMenu()" data-i18n="nav_craftsmanship" class="hover:text-gold transition py-1">Craftsmanship</a>
+            <a href="#pricing" onclick="toggleMobileMenu()" data-i18n="nav_pricing" class="hover:text-gold transition py-1">Pricing</a>
         </div>
     </nav>
 
@@ -102,17 +116,17 @@
         </div>
 
         <div class="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 pt-4 md:pt-8 pb-2">
-            <span class="text-[10px] sm:text-xs md:text-sm tracking-[0.2em] md:tracking-[0.3em] text-gold uppercase mb-2 md:mb-3 block font-semibold">
+            <span data-i18n="hero_sub" class="text-[10px] sm:text-xs md:text-sm tracking-[0.2em] md:tracking-[0.3em] text-gold uppercase mb-2 md:mb-3 block font-semibold">
                 LUXURY BESPOKE TAILORING • DA NANG
             </span>
-            <h1 class="text-2xl sm:text-4xl md:text-6xl font-serif text-white font-bold mb-3 md:mb-5 tracking-wide leading-tight">
+            <h1 data-i18n="hero_title" class="text-2xl sm:text-4xl md:text-6xl font-serif text-white font-bold mb-3 md:mb-5 tracking-wide leading-tight">
                 THE ART OF BESPOKE TAILORING
             </h1>
-            <p class="text-gray-300 text-xs sm:text-sm md:text-base max-w-2xl md:max-w-3xl mx-auto mb-6 md:mb-8 font-normal leading-relaxed">
-                Bringing private at-home bespoke fitting directly to your hotel, residence, or office in <span class="whitespace-nowrap">Da Nang</span>.
+            <p data-i18n="hero_desc" class="text-gray-300 text-xs sm:text-sm md:text-base max-w-2xl md:max-w-3xl mx-auto mb-6 md:mb-8 font-normal leading-relaxed">
+                Bringing private at-home bespoke fitting directly to your hotel, residence, or office in Da Nang.
             </p>
             <div class="flex flex-wrap items-center justify-center gap-3">
-                <a href="#collection" class="border border-white/30 text-gray-200 px-5 py-2.5 sm:px-6 sm:py-3 text-[11px] sm:text-xs tracking-[0.15em] uppercase hover:border-gold hover:text-gold transition duration-300 bg-black/40">
+                <a href="#collection" data-i18n="hero_btn" class="border border-white/30 text-gray-200 px-5 py-2.5 sm:px-6 sm:py-3 text-[11px] sm:text-xs tracking-[0.15em] uppercase hover:border-gold hover:text-gold transition duration-300 bg-black/40">
                     Explore Lookbook
                 </a>
             </div>
@@ -124,18 +138,18 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8">
             <div class="glass-panel p-6 sm:p-8 text-center flex flex-col items-center rounded-sm">
                 <div class="text-gold text-2xl sm:text-3xl mb-3 sm:mb-4"><i class="fas fa-cut"></i></div>
-                <h3 class="font-serif text-lg sm:text-xl text-white mb-2 sm:mb-3 tracking-wide font-semibold">Bespoke Construction</h3>
-                <p class="text-gray-300 text-xs sm:text-sm leading-relaxed font-normal">Custom hand-stitched tailoring structured to mold perfectly to your body shape.</p>
+                <h3 data-i18n="why_title1" class="font-serif text-lg sm:text-xl text-white mb-2 sm:mb-3 tracking-wide font-semibold">Bespoke Construction</h3>
+                <p data-i18n="why_desc1" class="text-gray-300 text-xs sm:text-sm leading-relaxed font-normal">Custom hand-stitched tailoring structured to mold perfectly to your body shape.</p>
             </div>
             <div class="glass-panel p-6 sm:p-8 text-center flex flex-col items-center rounded-sm">
                 <div class="text-gold text-2xl sm:text-3xl mb-3 sm:mb-4"><i class="fas fa-user-tie"></i></div>
-                <h3 class="font-serif text-lg sm:text-xl text-white mb-2 sm:mb-3 tracking-wide font-semibold">Master Artisan Tailor</h3>
-                <p class="text-gray-300 text-xs sm:text-sm leading-relaxed font-normal">Crafted by a seasoned master artisan with years of experience tailoring bespoke outfits.</p>
+                <h3 data-i18n="why_title2" class="font-serif text-lg sm:text-xl text-white mb-2 sm:mb-3 tracking-wide font-semibold">Master Artisan Tailor</h3>
+                <p data-i18n="why_desc2" class="text-gray-300 text-xs sm:text-sm leading-relaxed font-normal">Crafted by a seasoned master artisan with years of experience tailoring bespoke outfits.</p>
             </div>
             <div class="glass-panel p-6 sm:p-8 text-center flex flex-col items-center rounded-sm">
                 <div class="text-gold text-2xl sm:text-3xl mb-3 sm:mb-4"><i class="fas fa-home"></i></div>
-                <h3 class="font-serif text-lg sm:text-xl text-white mb-2 sm:mb-3 tracking-wide font-semibold">At-Home Doorstep Service</h3>
-                <p class="text-gray-300 text-xs sm:text-sm leading-relaxed font-normal">We bring fabric swatches and conduct fitting sessions at your private villa or hotel.</p>
+                <h3 data-i18n="why_title3" class="font-serif text-lg sm:text-xl text-white mb-2 sm:mb-3 tracking-wide font-semibold">At-Home Doorstep Service</h3>
+                <p data-i18n="why_desc3" class="text-gray-300 text-xs sm:text-sm leading-relaxed font-normal">We bring fabric swatches and conduct fitting sessions at your private villa or hotel.</p>
             </div>
         </div>
     </section>
@@ -143,22 +157,22 @@
     <!-- Collection Showcase -->
     <section id="collection" class="scroll-mt-20 py-10 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto">
         <div class="text-center mb-6 md:mb-12">
-            <span class="text-gold tracking-[0.25em] uppercase text-[10px] sm:text-xs font-semibold block mb-1.5">Bespoke Portfolio</span>
-            <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-white tracking-wide font-bold">SIGNATURE LOOKBOOK</h2>
+            <span data-i18n="portfolio_sub" class="text-gold tracking-[0.25em] uppercase text-[10px] sm:text-xs font-semibold block mb-1.5">Bespoke Portfolio</span>
+            <h2 data-i18n="portfolio_title" class="font-serif text-2xl sm:text-3xl md:text-4xl text-white tracking-wide font-bold">SIGNATURE LOOKBOOK</h2>
         </div>
 
         <!-- Filter Tabs -->
         <div class="flex overflow-x-auto no-scrollbar md:flex-wrap md:justify-center gap-2 sm:gap-3 mb-8 md:mb-12 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
-            <button onclick="filterGallery('all', event)" class="tab-btn active text-[10px] sm:text-xs uppercase tracking-widest px-4 sm:px-5 py-2.5 border border-gold bg-gold text-black font-semibold transition whitespace-nowrap shrink-0">All Works</button>
-            <button onclick="filterGallery('studio', event)" class="tab-btn text-[10px] sm:text-xs uppercase tracking-widest px-4 sm:px-5 py-2.5 border border-white/20 text-gray-300 hover:text-white transition whitespace-nowrap shrink-0">Studio Bespoke</button>
-            <button onclick="filterGallery('black', event)" class="tab-btn text-[10px] sm:text-xs uppercase tracking-widest px-4 sm:px-5 py-2.5 border border-white/20 text-gray-300 hover:text-white transition whitespace-nowrap shrink-0">Classic Black</button>
-            <button onclick="filterGallery('red', event)" class="tab-btn text-[10px] sm:text-xs uppercase tracking-widest px-4 sm:px-5 py-2.5 border border-white/20 text-gray-300 hover:text-white transition whitespace-nowrap shrink-0">Crimson Lounge</button>
-            <button onclick="filterGallery('white', event)" class="tab-btn text-[10px] sm:text-xs uppercase tracking-widest px-4 sm:px-5 py-2.5 border border-white/20 text-gray-300 hover:text-white transition whitespace-nowrap shrink-0">Riviera Resort</button>
+            <button onclick="filterGallery('all', event)" data-i18n="tab_all" class="tab-btn active text-[10px] sm:text-xs uppercase tracking-widest px-4 sm:px-5 py-2.5 border border-gold bg-gold text-black font-semibold transition whitespace-nowrap shrink-0">All Works</button>
+            <button onclick="filterGallery('studio', event)" data-i18n="tab_studio" class="tab-btn text-[10px] sm:text-xs uppercase tracking-widest px-4 sm:px-5 py-2.5 border border-white/20 text-gray-300 hover:text-white transition whitespace-nowrap shrink-0">Studio Bespoke</button>
+            <button onclick="filterGallery('black', event)" data-i18n="tab_black" class="tab-btn text-[10px] sm:text-xs uppercase tracking-widest px-4 sm:px-5 py-2.5 border border-white/20 text-gray-300 hover:text-white transition whitespace-nowrap shrink-0">Classic Black</button>
+            <button onclick="filterGallery('red', event)" data-i18n="tab_red" class="tab-btn text-[10px] sm:text-xs uppercase tracking-widest px-4 sm:px-5 py-2.5 border border-white/20 text-gray-300 hover:text-white transition whitespace-nowrap shrink-0">Crimson Lounge</button>
+            <button onclick="filterGallery('white', event)" data-i18n="tab_white" class="tab-btn text-[10px] sm:text-xs uppercase tracking-widest px-4 sm:px-5 py-2.5 border border-white/20 text-gray-300 hover:text-white transition whitespace-nowrap shrink-0">Riviera Resort</button>
         </div>
 
         <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
             
-            <!-- STUDIO BESPOKE (1-5, 15-21) -->
+            <!-- STUDIO BESPOKE -->
             <div class="gallery-item studio group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer rounded-sm" onclick="openLightbox('./img/16.png')">
                 <img src="./img/16.png" alt="Brown Pinstripe Suit" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
             </div>
@@ -196,12 +210,12 @@
                 <img src="./img/15.png" alt="Studio Suit" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
             </div>
 
-            <!-- Classic Black Collection (Img 6, 7, 8) -->
+            <!-- Classic Black Collection -->
             <div class="gallery-item black group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer rounded-sm" onclick="openLightbox('./img/6.png')">
                 <img src="./img/6.png" alt="Black Suit" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-3 sm:p-6 flex flex-col justify-end">
-                    <span class="text-gold text-[10px] sm:text-xs uppercase tracking-widest">Classic Series</span>
-                    <h4 class="font-serif text-xs sm:text-lg text-white font-medium">Bespoke Black Tuxedo & Suit</h4>
+                    <span data-i18n="card_black_sub" class="text-gold text-[10px] sm:text-xs uppercase tracking-widest">Classic Series</span>
+                    <h4 data-i18n="card_black_title" class="font-serif text-xs sm:text-lg text-white font-medium">Bespoke Black Tuxedo & Suit</h4>
                 </div>
             </div>
             <div class="gallery-item black group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer rounded-sm" onclick="openLightbox('./img/7.png')">
@@ -211,12 +225,12 @@
                 <img src="./img/8.png" alt="Black Suit Fit" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
             </div>
 
-            <!-- Crimson Lounge Collection (Img 9, 10, 11) -->
+            <!-- Crimson Lounge Collection -->
             <div class="gallery-item red group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer rounded-sm" onclick="openLightbox('./img/9.png')">
                 <img src="./img/9.png" alt="Crimson Suit" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-3 sm:p-6 flex flex-col justify-end">
-                    <span class="text-gold text-[10px] sm:text-xs uppercase tracking-widest">Statement Collection</span>
-                    <h4 class="font-serif text-xs sm:text-lg text-white font-medium">Crimson Evening Lounge Jacket</h4>
+                    <span data-i18n="card_red_sub" class="text-gold text-[10px] sm:text-xs uppercase tracking-widest">Statement Collection</span>
+                    <h4 data-i18n="card_red_title" class="font-serif text-xs sm:text-lg text-white font-medium">Crimson Evening Lounge Jacket</h4>
                 </div>
             </div>
             <div class="gallery-item red group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer rounded-sm" onclick="openLightbox('./img/10.png')">
@@ -226,12 +240,12 @@
                 <img src="./img/11.png" alt="Crimson Suit Seated" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
             </div>
 
-            <!-- Riviera Resort Collection (Img 12, 13, 14) -->
+            <!-- Riviera Resort Collection -->
             <div class="gallery-item white group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer rounded-sm" onclick="openLightbox('./img/12.png')">
                 <img src="./img/12.png" alt="White Riviera Suit" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-3 sm:p-6 flex flex-col justify-end">
-                    <span class="text-gold text-[10px] sm:text-xs uppercase tracking-widest">Resort & Wedding</span>
-                    <h4 class="font-serif text-xs sm:text-lg text-white font-medium">Off-White Linen Riviera Suit</h4>
+                    <span data-i18n="card_white_sub" class="text-gold text-[10px] sm:text-xs uppercase tracking-widest">Resort & Wedding</span>
+                    <h4 data-i18n="card_white_title" class="font-serif text-xs sm:text-lg text-white font-medium">Off-White Linen Riviera Suit</h4>
                 </div>
             </div>
             <div class="gallery-item white group relative aspect-[3/4] overflow-hidden bg-cardbg cursor-pointer rounded-sm" onclick="openLightbox('./img/13.png')">
@@ -247,16 +261,16 @@
     <!-- Craftsmanship Section -->
     <section id="craftsmanship" class="scroll-mt-20 py-12 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto border-t border-gold/10">
         <div class="text-center mb-8 md:mb-16">
-            <span class="text-gold tracking-[0.25em] uppercase text-[10px] sm:text-xs font-semibold block mb-1.5">ARTISANAL EXCELLENCE</span>
-            <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-white tracking-wide font-bold">THE BESPOKE JOURNEY</h2>
+            <span data-i18n="journey_sub" class="text-gold tracking-[0.25em] uppercase text-[10px] sm:text-xs font-semibold block mb-1.5">ARTISANAL EXCELLENCE</span>
+            <h2 data-i18n="journey_title" class="font-serif text-2xl sm:text-3xl md:text-4xl text-white tracking-wide font-bold">THE BESPOKE JOURNEY</h2>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             <div class="glass-panel p-6 text-center relative flex flex-col items-center rounded-sm">
                 <span class="text-gold/20 font-serif text-4xl sm:text-5xl font-bold absolute top-3 right-4">01</span>
                 <div class="text-gold text-2xl mb-3 mt-1"><i class="fas fa-tape"></i></div>
-                <h3 class="font-serif text-base sm:text-lg text-white font-semibold mb-2">Consultation & Fit</h3>
-                <p class="text-gray-400 text-xs leading-relaxed">
+                <h3 data-i18n="step1_title" class="font-serif text-base sm:text-lg text-white font-semibold mb-2">Consultation & Fit</h3>
+                <p data-i18n="step1_desc" class="text-gray-400 text-xs leading-relaxed">
                     We meet at your residence or hotel to take precise body measurements and help you select your preferred fabric.
                 </p>
             </div>
@@ -264,8 +278,8 @@
             <div class="glass-panel p-6 text-center relative flex flex-col items-center rounded-sm">
                 <span class="text-gold/20 font-serif text-4xl sm:text-5xl font-bold absolute top-3 right-4">02</span>
                 <div class="text-gold text-2xl mb-3 mt-1"><i class="fas fa-scissors"></i></div>
-                <h3 class="font-serif text-base sm:text-lg text-white font-semibold mb-2">Cutting & Drafting</h3>
-                <p class="text-gray-400 text-xs leading-relaxed">
+                <h3 data-i18n="step2_title" class="font-serif text-base sm:text-lg text-white font-semibold mb-2">Cutting & Drafting</h3>
+                <p data-i18n="step2_desc" class="text-gray-400 text-xs leading-relaxed">
                     Our master tailor cuts the chosen cloth and hand-assembles the initial garment canvas frame at the workshop.
                 </p>
             </div>
@@ -273,8 +287,8 @@
             <div class="glass-panel p-6 text-center relative flex flex-col items-center rounded-sm">
                 <span class="text-gold/20 font-serif text-4xl sm:text-5xl font-bold absolute top-3 right-4">03</span>
                 <div class="text-gold text-2xl mb-3 mt-1"><i class="fas fa-user-check"></i></div>
-                <h3 class="font-serif text-base sm:text-lg text-white font-semibold mb-2">Doorstep Fitting</h3>
-                <p class="text-gray-400 text-xs leading-relaxed">
+                <h3 data-i18n="step3_title" class="font-serif text-base sm:text-lg text-white font-semibold mb-2">Doorstep Fitting</h3>
+                <p data-i18n="step3_desc" class="text-gray-400 text-xs leading-relaxed">
                     We visit your location directly for a basted fitting session to fine-tune the fit, posture, and drape.
                 </p>
             </div>
@@ -282,8 +296,8 @@
             <div class="glass-panel p-6 text-center relative flex flex-col items-center rounded-sm">
                 <span class="text-gold/20 font-serif text-4xl sm:text-5xl font-bold absolute top-3 right-4">04</span>
                 <div class="text-gold text-2xl mb-3 mt-1"><i class="fas fa-gem"></i></div>
-                <h3 class="font-serif text-base sm:text-lg text-white font-semibold mb-2">Finishing & Delivery</h3>
-                <p class="text-gray-400 text-xs leading-relaxed">
+                <h3 data-i18n="step4_title" class="font-serif text-base sm:text-lg text-white font-semibold mb-2">Finishing & Delivery</h3>
+                <p data-i18n="step4_desc" class="text-gray-400 text-xs leading-relaxed">
                     Our artisans complete all fine hand-stitching, lining, and final press before hand-delivering your completed suit.
                 </p>
             </div>
@@ -294,51 +308,50 @@
     <section id="pricing" class="scroll-mt-20 py-12 md:py-24 px-4 sm:px-6 bg-[#0A0A0B]">
         <div class="max-w-4xl mx-auto text-center">
             <div class="glass-panel p-5 sm:p-12 md:p-16 relative overflow-hidden rounded-sm">
-                <span class="text-[10px] sm:text-xs tracking-[0.25em] text-gold uppercase mb-2 block font-semibold">TRANSPARENT INVESTMENT</span>
-                <h2 class="text-2xl md:text-4xl font-serif text-white font-bold mb-4 md:mb-6 tracking-wide">BESPOKE PRICING</h2>
+                <span data-i18n="pricing_sub" class="text-[10px] sm:text-xs tracking-[0.25em] text-gold uppercase mb-2 block font-semibold">TRANSPARENT INVESTMENT</span>
+                <h2 data-i18n="pricing_title" class="text-2xl md:text-4xl font-serif text-white font-bold mb-4 md:mb-6 tracking-wide">BESPOKE PRICING</h2>
                 
-                <!-- Cỡ chữ responsive đảm bảo giữ 1 hàng không bị rớt từ VND -->
-                <div class="text-lg sm:text-3xl md:text-4xl lg:text-5xl font-serif text-gold font-bold mb-1 tracking-tight whitespace-nowrap">
+                <div data-i18n="pricing_price" class="text-lg sm:text-3xl md:text-4xl lg:text-5xl font-serif text-gold font-bold mb-1 tracking-tight whitespace-nowrap">
                     STARTING FROM 4,000,000 VND
                 </div>
-                <p class="text-gray-300 text-xs sm:text-sm md:text-lg font-medium mb-6 md:mb-8">(~$150 USD)</p>
+                <p data-i18n="pricing_usd" class="text-gray-300 text-xs sm:text-sm md:text-lg font-medium mb-6 md:mb-8">(~$150 USD)</p>
 
-                <p class="text-gray-300 text-xs sm:text-sm md:text-base max-w-2xl mx-auto mb-8 leading-relaxed font-normal">
+                <p data-i18n="pricing_desc" class="text-gray-300 text-xs sm:text-sm md:text-base max-w-2xl mx-auto mb-8 leading-relaxed font-normal">
                     Includes your choice of premium fabrics, custom hand-stitched Bespoke construction, basted fitting session, and doorstep delivery within 3–7 days.
                 </p>
 
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
                     <a href="https://wa.me/84339447859" target="_blank" class="w-full sm:w-auto min-h-[44px] bg-gold text-black font-bold px-8 py-3.5 text-xs tracking-[0.2em] uppercase hover:bg-goldlight transition flex items-center justify-center space-x-2">
                         <i class="fab fa-whatsapp text-base"></i>
-                        <span>WhatsApp Booking</span>
+                        <span data-i18n="pricing_whatsapp">WhatsApp Booking</span>
                     </a>
                     <a href="https://zalo.me/0965811674" target="_blank" class="w-full sm:w-auto min-h-[44px] border border-gold text-gold font-semibold px-8 py-3.5 text-xs tracking-[0.2em] uppercase hover:bg-gold hover:text-black transition flex items-center justify-center space-x-2">
                         <span class="font-bold text-[10px] bg-gold text-black px-1 rounded-sm">ZALO</span>
-                        <span>Zalo Chat</span>
+                        <span data-i18n="pricing_zalo">Zalo Chat</span>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer (Đã lược bỏ dòng chữ dư thừa) -->
+    <!-- Footer -->
     <footer class="bg-darkbg py-8 md:py-10 px-6 text-center border-t border-gold/10 pb-24 md:pb-10">
-        <p class="text-gray-400 text-xs sm:text-sm tracking-wide">&copy; 2026 NORIST Bespoke Tailoring - Da Nang. All rights reserved.</p>
+        <p data-i18n="footer_text" class="text-gray-400 text-xs sm:text-sm tracking-wide">&copy; 2026 NORIST Bespoke Tailoring - Da Nang. All rights reserved.</p>
     </footer>
 
     <!-- Mobile Sticky CTA Bar -->
     <div class="fixed bottom-0 left-0 right-0 z-40 md:hidden glass-panel border-t border-gold/30 px-3 py-2.5 pb-safe grid grid-cols-3 gap-2 shadow-2xl">
         <a href="tel:+84339447859" class="bg-darkbg border border-gold/40 text-gold text-center py-2.5 rounded-sm text-[10px] tracking-wider uppercase font-semibold flex flex-col items-center justify-center gap-1 active:bg-gold/10">
             <i class="fas fa-phone-alt text-xs"></i>
-            <span>CALL US</span>
+            <span data-i18n="mobile_call">CALL US</span>
         </a>
         <a href="https://wa.me/84339447859" target="_blank" class="bg-gold text-black text-center py-2.5 rounded-sm text-[10px] tracking-wider uppercase font-bold flex flex-col items-center justify-center gap-1 shadow-lg active:bg-goldlight">
             <i class="fab fa-whatsapp text-sm"></i>
-            <span>WHATSAPP</span>
+            <span data-i18n="mobile_whatsapp">WHATSAPP</span>
         </a>
         <a href="https://zalo.me/0965811674" target="_blank" class="bg-darkbg border border-gold text-gold text-center py-2.5 rounded-sm text-[10px] tracking-wider uppercase font-bold flex flex-col items-center justify-center gap-1 active:bg-gold/10">
             <span class="font-black text-[9px] bg-gold text-black px-1 rounded-sm leading-none">ZALO</span>
-            <span>ZALO CHAT</span>
+            <span data-i18n="mobile_zalo">ZALO CHAT</span>
         </a>
     </div>
 
@@ -362,8 +375,181 @@
         </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- Scripts & i18n Logic -->
     <script>
+        // Từ điển Dịch thuật (Dictionary)
+        const i18nData = {
+            en: {
+                nav_why_us: "Why Us",
+                nav_collection: "Lookbook",
+                nav_craftsmanship: "Craftsmanship",
+                nav_pricing: "Pricing",
+                btn_call: "Call",
+                btn_whatsapp: "WhatsApp",
+                
+                hero_sub: "LUXURY BESPOKE TAILORING • DA NANG",
+                hero_title: "THE ART OF BESPOKE TAILORING",
+                hero_desc: "Bringing private at-home bespoke fitting directly to your hotel, residence, or office in Da Nang.",
+                hero_btn: "Explore Lookbook",
+                
+                why_title1: "Bespoke Construction",
+                why_desc1: "Custom hand-stitched tailoring structured to mold perfectly to your body shape.",
+                why_title2: "Master Artisan Tailor",
+                why_desc2: "Crafted by a seasoned master artisan with years of experience tailoring bespoke outfits.",
+                why_title3: "At-Home Doorstep Service",
+                why_desc3: "We bring fabric swatches and conduct fitting sessions at your private villa or hotel.",
+                
+                portfolio_sub: "Bespoke Portfolio",
+                portfolio_title: "SIGNATURE LOOKBOOK",
+                tab_all: "All Works",
+                tab_studio: "Studio Bespoke",
+                tab_black: "Classic Black",
+                tab_red: "Crimson Lounge",
+                tab_white: "Riviera Resort",
+                
+                card_black_sub: "Classic Series",
+                card_black_title: "Bespoke Black Tuxedo & Suit",
+                card_red_sub: "Statement Collection",
+                card_red_title: "Crimson Evening Lounge Jacket",
+                card_white_sub: "Resort & Wedding",
+                card_white_title: "Off-White Linen Riviera Suit",
+                
+                journey_sub: "ARTISANAL EXCELLENCE",
+                journey_title: "THE BESPOKE JOURNEY",
+                step1_title: "Consultation & Fit",
+                step1_desc: "We meet at your residence or hotel to take precise body measurements and help you select your preferred fabric.",
+                step2_title: "Cutting & Drafting",
+                step2_desc: "Our master tailor cuts the chosen cloth and hand-assembles the initial garment canvas frame at the workshop.",
+                step3_title: "Doorstep Fitting",
+                step3_desc: "We visit your location directly for a basted fitting session to fine-tune the fit, posture, and drape.",
+                step4_title: "Finishing & Delivery",
+                step4_desc: "Our artisans complete all fine hand-stitching, lining, and final press before hand-delivering your completed suit.",
+                
+                pricing_sub: "TRANSPARENT INVESTMENT",
+                pricing_title: "BESPOKE PRICING",
+                pricing_price: "STARTING FROM 4,000,000 VND",
+                pricing_usd: "(~$150 USD)",
+                pricing_desc: "Includes your choice of premium fabrics, custom hand-stitched Bespoke construction, basted fitting session, and doorstep delivery within 3-7 days.",
+                pricing_whatsapp: "WhatsApp Booking",
+                pricing_zalo: "Zalo Chat",
+                
+                footer_text: "© 2026 NORIST Bespoke Tailoring - Da Nang. All rights reserved.",
+                mobile_call: "CALL US",
+                mobile_whatsapp: "WHATSAPP",
+                mobile_zalo: "ZALO CHAT"
+            },
+            vi: {
+                nav_why_us: "Về Chúng Tôi",
+                nav_collection: "Bộ Sưu Tập",
+                nav_craftsmanship: "Nghệ Thuật May Đo",
+                nav_pricing: "Bảng Giá",
+                btn_call: "Gọi Điện",
+                btn_whatsapp: "WhatsApp",
+                
+                hero_sub: "MAY ĐO BESPOKE CAO CẤP • ĐÀ NẴNG",
+                hero_title: "NGHỆ THUẬT MAY ĐO BESPOKE",
+                hero_desc: "Mang trải nghiệm thử đồ Bespoke đến tận khách sạn, tư gia hoặc văn phòng của bạn tại Đà Nẵng.",
+                hero_btn: "KHÁM PHÁ BỘ SƯU TẬP",
+                
+                why_title1: "Quy Trình May Thủ Công",
+                why_desc1: "Sản phẩm được đo may tỉ mỉ, kiến tạo phom dáng chuẩn xác và vừa vặn hoàn hảo với cơ thể bạn.",
+                why_title2: "Nghệ Nhân Giàu Kinh Nghiệm",
+                why_desc2: "Được chế tác bởi nghệ nhân may đo lâu năm giàu kinh nghiệm phục vụ các khách hàng cao cấp.",
+                why_title3: "May Đo Tận Nơi",
+                why_desc3: "Chúng tôi mang mẫu vải và đo đạc trực tiếp tại biệt thự, khách sạn hoặc nhà riêng của bạn.",
+                
+                portfolio_sub: "Bespoke Portfolio",
+                portfolio_title: "SIGNATURE LOOKBOOK",
+                tab_all: "Tất Cả",
+                tab_studio: "Studio Bespoke",
+                tab_black: "Classic Black",
+                tab_red: "Crimson Lounge",
+                tab_white: "Riviera Resort",
+                
+                card_black_sub: "Dòng Cổ Điển",
+                card_black_title: "Black Tuxedo & Suit Bespoke",
+                card_red_sub: "Dòng Sang Trọng",
+                card_red_title: "Crimson Evening Lounge Jacket",
+                card_white_sub: "Sự Kiện & Lễ Cưới",
+                card_white_title: "Off-White Linen Riviera Suit",
+                
+                journey_sub: "QUY TRÌNH CHẾ TÁC THỦ CÔNG",
+                journey_title: "HÀNH TRÌNH MAY ĐO BESPOKE",
+                step1_title: "Tư Vấn & Lấy Số Đo",
+                step1_desc: "Chúng tôi gặp gỡ bạn ngay tại tư gia hoặc khách sạn để tiến hành lấy số đo cơ thể chuẩn xác và hỗ trợ bạn lựa chọn chất liệu vải ưng ý.",
+                step2_title: "Cắt May & Tạo Phom",
+                step2_desc: "Nghệ nhân phác thảo bản vẽ độc bản theo chỉ số cơ thể và cắt vải thủ công tại xưởng.",
+                step3_title: "Thử Phom Mộc (Fitting)",
+                step3_desc: "Chúng tôi đến tận nơi để tiến hành buổi thử đồ sơ bộ (basted fitting), giúp tinh chỉnh độ vừa vặn, phom dáng và độ rủ của trang phục một cách hoàn hảo nhất.",
+                step4_title: "Hoàn Thiện & Giao Tận Nơi",
+                step4_desc: "Chăm chút từng đường may khuy áo, lót áo và ủi phom chuẩn xác trước khi giao tận tay bạn.",
+                
+                pricing_sub: "CHI PHÍ MINH BẠCH",
+                pricing_title: "BẢNG GIÁ MAY ĐO",
+                pricing_price: "CHỈ TỪ 4.000.000 VNĐ",
+                pricing_usd: "(~$150 USD)",
+                pricing_desc: "Đã bao gồm vải cao cấp, dựng canvas thủ công Bespoke, buổi thử phom mộc (basted fitting) và giao hàng tận nơi trong 3-7 ngày.",
+                pricing_whatsapp: "Đặt Lịch WhatsApp",
+                pricing_zalo: "Chat Zalo",
+                
+                footer_text: "© 2026 NORIST Bespoke Tailoring - Da Nang. All rights reserved.",
+                mobile_call: "GỌI ĐIỆN",
+                mobile_whatsapp: "WHATSAPP",
+                mobile_zalo: "CHAT ZALO"
+            }
+        };
+
+        // Logic Xử Lý Ngôn Ngữ
+        function detectLanguage() {
+            const savedLang = localStorage.getItem('norist_lang');
+            if (savedLang) return savedLang;
+            const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+            return browserLang.startsWith('vi') ? 'vi' : 'en';
+        }
+
+        function setLanguage(lang) {
+            localStorage.setItem('norist_lang', lang);
+            document.documentElement.lang = lang;
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18nData[lang] && i18nData[lang][key]) {
+                    el.innerHTML = i18nData[lang][key];
+                }
+            });
+
+            // Cập nhật trạng thái nút bấm Desktop & Mobile
+            const btnEn = document.getElementById('btn-en');
+            const btnVi = document.getElementById('btn-vi');
+            const btnEnMb = document.getElementById('btn-en-mb');
+            const btnViMb = document.getElementById('btn-vi-mb');
+
+            const activeClass = "px-2 py-0.5 rounded transition bg-gold text-black font-bold";
+            const inactiveClass = "px-2 py-0.5 rounded transition text-gray-400 hover:text-gold";
+
+            if (lang === 'en') {
+                if (btnEn) btnEn.className = activeClass;
+                if (btnVi) btnVi.className = inactiveClass;
+                if (btnEnMb) btnEnMb.className = activeClass;
+                if (btnViMb) btnViMb.className = inactiveClass;
+            } else {
+                if (btnVi) btnVi.className = activeClass;
+                if (btnEn) btnEn.className = inactiveClass;
+                if (btnViMb) btnViMb.className = activeClass;
+                if (btnEnMb) btnEnMb.className = inactiveClass;
+            }
+        }
+
+        function changeLanguage(lang) {
+            setLanguage(lang);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const initialLang = detectLanguage();
+            setLanguage(initialLang);
+        });
+
+        // Toggle Navigation Mobile
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             const icon = document.getElementById('menu-icon');
@@ -378,6 +564,7 @@
             }
         }
 
+        // Logic Gallery & Lightbox
         let currentImageIndex = 0;
         let activeImageSources = [];
 
@@ -455,6 +642,7 @@
             }
         });
 
+        // Touch Swipe
         let touchStartX = 0;
         let touchEndX = 0;
         const lightboxEl = document.getElementById('lightbox');
